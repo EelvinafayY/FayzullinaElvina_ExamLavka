@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище FayzullinaElvina_LavkaExamModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CollectionService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MasterQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMaster" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MasterService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMaster" Type="int" />
+          <Property Name="IdService" Type="int" />
+        </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdWorker" Type="int" />
+          <Property Name="NumberInQueu" Type="int" />
+          <Property Name="IdService" Type="int" />
+        </EntityType>
+        <EntityType Name="RequestForPromotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMaster" Type="int" />
+          <Property Name="Request" Type="nvarchar" MaxLength="300" />
+          <Property Name="IdStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="ReviewsAboutMasters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdMaster" Type="int" />
+          <Property Name="Review" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ReviewsAboutServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdService" Type="int" />
+          <Property Name="Review" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateEdit" Type="datetime" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="IdType" Type="int" />
+          <Property Name="IdCollection" Type="int" />
+          <Property Name="Cost" Type="decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="StatusRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Login" Type="nvarchar" MaxLength="10" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UsersCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="NumberCard" Type="nvarchar" MaxLength="16" />
+          <Property Name="CardValidity" Type="nvarchar" MaxLength="10" />
+          <Property Name="CVC" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Login" Type="nvarchar" MaxLength="10" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdRole" Type="int" />
+        </EntityType>
+        <Association Name="FK_MasterQualification_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MasterQualification" Type="Self.MasterQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterQualification">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterService_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterService">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterService_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterService">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="IdWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestForPromotion_StatusRequest">
+          <End Role="StatusRequest" Type="Self.StatusRequest" Multiplicity="0..1" />
+          <End Role="RequestForPromotion" Type="Self.RequestForPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestForPromotion">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestForPromotion_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequestForPromotion" Type="Self.RequestForPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestForPromotion">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutMasters_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutMasters" Type="Self.ReviewsAboutMasters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutMasters">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutMasters_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutMasters" Type="Self.ReviewsAboutMasters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutMasters">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutServices_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutServices" Type="Self.ReviewsAboutServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutServices">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutServices_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutServices" Type="Self.ReviewsAboutServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutServices">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Services_CollectionService">
+          <End Role="CollectionService" Type="Self.CollectionService" Multiplicity="0..1" />
+          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="IdCollection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Services_TypeService">
+          <End Role="TypeService" Type="Self.TypeService" Multiplicity="0..1" />
+          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersCards_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersCards" Type="Self.UsersCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersCards">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Workers">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище FayzullinaElvina_LavkaExamModelContainer">
+          <EntitySet Name="CollectionService" EntityType="Self.CollectionService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterQualification" EntityType="Self.MasterQualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterService" EntityType="Self.MasterService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestForPromotion" EntityType="Self.RequestForPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReviewsAboutMasters" EntityType="Self.ReviewsAboutMasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReviewsAboutServices" EntityType="Self.ReviewsAboutServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusRequest" EntityType="Self.StatusRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeService" EntityType="Self.TypeService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersCards" EntityType="Self.UsersCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MasterQualification_Workers" Association="Self.FK_MasterQualification_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="MasterQualification" EntitySet="MasterQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterService_Services" Association="Self.FK_MasterService_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="MasterService" EntitySet="MasterService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterService_Workers" Association="Self.FK_MasterService_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="MasterService" EntitySet="MasterService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Services" Association="Self.FK_Records_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Users" Association="Self.FK_Records_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Workers" Association="Self.FK_Records_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestForPromotion_StatusRequest" Association="Self.FK_RequestForPromotion_StatusRequest">
+            <End Role="StatusRequest" EntitySet="StatusRequest" />
+            <End Role="RequestForPromotion" EntitySet="RequestForPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestForPromotion_Workers" Association="Self.FK_RequestForPromotion_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="RequestForPromotion" EntitySet="RequestForPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutMasters_Users" Association="Self.FK_ReviewsAboutMasters_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReviewsAboutMasters" EntitySet="ReviewsAboutMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutMasters_Workers" Association="Self.FK_ReviewsAboutMasters_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="ReviewsAboutMasters" EntitySet="ReviewsAboutMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutServices_Services" Association="Self.FK_ReviewsAboutServices_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ReviewsAboutServices" EntitySet="ReviewsAboutServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutServices_Users" Association="Self.FK_ReviewsAboutServices_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReviewsAboutServices" EntitySet="ReviewsAboutServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_CollectionService" Association="Self.FK_Services_CollectionService">
+            <End Role="CollectionService" EntitySet="CollectionService" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_TypeService" Association="Self.FK_Services_TypeService">
+            <End Role="TypeService" EntitySet="TypeService" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersCards_Users" Association="Self.FK_UsersCards_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersCards" EntitySet="UsersCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_Role" Association="Self.FK_Workers_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Workers" EntitySet="Workers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FayzullinaElvina_LavkaExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CollectionService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Services_CollectionService" FromRole="CollectionService" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="MasterQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMaster" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_MasterQualification_Workers" FromRole="MasterQualification" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="MasterService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMaster" Type="Int32" />
+          <Property Name="IdService" Type="Int32" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_MasterService_Services" FromRole="MasterService" ToRole="Services" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_MasterService_Workers" FromRole="MasterService" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdWorker" Type="Int32" />
+          <Property Name="NumberInQueu" Type="Int32" />
+          <Property Name="IdService" Type="Int32" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Records_Services" FromRole="Records" ToRole="Services" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Records_Users" FromRole="Records" ToRole="Users" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Records_Workers" FromRole="Records" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="RequestForPromotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMaster" Type="Int32" />
+          <Property Name="Request" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IdStatus" Type="Int32" />
+          <NavigationProperty Name="StatusRequest" Relationship="Self.FK_RequestForPromotion_StatusRequest" FromRole="RequestForPromotion" ToRole="StatusRequest" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_RequestForPromotion_Workers" FromRole="RequestForPromotion" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="ReviewsAboutMasters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdMaster" Type="Int32" />
+          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_ReviewsAboutMasters_Users" FromRole="ReviewsAboutMasters" ToRole="Users" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_ReviewsAboutMasters_Workers" FromRole="ReviewsAboutMasters" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="ReviewsAboutServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdService" Type="Int32" />
+          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_ReviewsAboutServices_Services" FromRole="ReviewsAboutServices" ToRole="Services" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_ReviewsAboutServices_Users" FromRole="ReviewsAboutServices" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Role" FromRole="Role" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateEdit" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdType" Type="Int32" />
+          <Property Name="IdCollection" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="CollectionService" Relationship="Self.FK_Services_CollectionService" FromRole="Services" ToRole="CollectionService" />
+          <NavigationProperty Name="MasterService" Relationship="Self.FK_MasterService_Services" FromRole="Services" ToRole="MasterService" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Records_Services" FromRole="Services" ToRole="Records" />
+          <NavigationProperty Name="ReviewsAboutServices" Relationship="Self.FK_ReviewsAboutServices_Services" FromRole="Services" ToRole="ReviewsAboutServices" />
+          <NavigationProperty Name="TypeService" Relationship="Self.FK_Services_TypeService" FromRole="Services" ToRole="TypeService" />
+        </EntityType>
+        <EntityType Name="StatusRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RequestForPromotion" Relationship="Self.FK_RequestForPromotion_StatusRequest" FromRole="StatusRequest" ToRole="RequestForPromotion" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Services_TypeService" FromRole="TypeService" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Login" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Records_Users" FromRole="Users" ToRole="Records" />
+          <NavigationProperty Name="ReviewsAboutMasters" Relationship="Self.FK_ReviewsAboutMasters_Users" FromRole="Users" ToRole="ReviewsAboutMasters" />
+          <NavigationProperty Name="ReviewsAboutServices" Relationship="Self.FK_ReviewsAboutServices_Users" FromRole="Users" ToRole="ReviewsAboutServices" />
+          <NavigationProperty Name="UsersCards" Relationship="Self.FK_UsersCards_Users" FromRole="Users" ToRole="UsersCards" />
+        </EntityType>
+        <EntityType Name="UsersCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="NumberCard" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="CardValidity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CVC" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UsersCards_Users" FromRole="UsersCards" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" />
+          <NavigationProperty Name="MasterQualification" Relationship="Self.FK_MasterQualification_Workers" FromRole="Workers" ToRole="MasterQualification" />
+          <NavigationProperty Name="MasterService" Relationship="Self.FK_MasterService_Workers" FromRole="Workers" ToRole="MasterService" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Records_Workers" FromRole="Workers" ToRole="Records" />
+          <NavigationProperty Name="RequestForPromotion" Relationship="Self.FK_RequestForPromotion_Workers" FromRole="Workers" ToRole="RequestForPromotion" />
+          <NavigationProperty Name="ReviewsAboutMasters" Relationship="Self.FK_ReviewsAboutMasters_Workers" FromRole="Workers" ToRole="ReviewsAboutMasters" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Workers_Role" FromRole="Workers" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Services_CollectionService">
+          <End Role="CollectionService" Type="Self.CollectionService" Multiplicity="0..1" />
+          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="IdCollection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterQualification_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MasterQualification" Type="Self.MasterQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterQualification">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterService_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterService">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterService_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterService">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="IdWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestForPromotion_StatusRequest">
+          <End Role="StatusRequest" Type="Self.StatusRequest" Multiplicity="0..1" />
+          <End Role="RequestForPromotion" Type="Self.RequestForPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestForPromotion">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestForPromotion_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequestForPromotion" Type="Self.RequestForPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestForPromotion">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutMasters_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutMasters" Type="Self.ReviewsAboutMasters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutMasters">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutMasters_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutMasters" Type="Self.ReviewsAboutMasters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutMasters">
+              <PropertyRef Name="IdMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutServices_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutServices" Type="Self.ReviewsAboutServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutServices">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReviewsAboutServices_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewsAboutServices" Type="Self.ReviewsAboutServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReviewsAboutServices">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Workers">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Services_TypeService">
+          <End Role="TypeService" Type="Self.TypeService" Multiplicity="0..1" />
+          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersCards_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersCards" Type="Self.UsersCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersCards">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FayzullinaElvina_LavkaExamEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CollectionService" EntityType="Self.CollectionService" />
+          <EntitySet Name="MasterQualification" EntityType="Self.MasterQualification" />
+          <EntitySet Name="MasterService" EntityType="Self.MasterService" />
+          <EntitySet Name="Records" EntityType="Self.Records" />
+          <EntitySet Name="RequestForPromotion" EntityType="Self.RequestForPromotion" />
+          <EntitySet Name="ReviewsAboutMasters" EntityType="Self.ReviewsAboutMasters" />
+          <EntitySet Name="ReviewsAboutServices" EntityType="Self.ReviewsAboutServices" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Services" EntityType="Self.Services" />
+          <EntitySet Name="StatusRequest" EntityType="Self.StatusRequest" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeService" EntityType="Self.TypeService" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsersCards" EntityType="Self.UsersCards" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" />
+          <AssociationSet Name="FK_Services_CollectionService" Association="Self.FK_Services_CollectionService">
+            <End Role="CollectionService" EntitySet="CollectionService" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterQualification_Workers" Association="Self.FK_MasterQualification_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="MasterQualification" EntitySet="MasterQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterService_Services" Association="Self.FK_MasterService_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="MasterService" EntitySet="MasterService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterService_Workers" Association="Self.FK_MasterService_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="MasterService" EntitySet="MasterService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Services" Association="Self.FK_Records_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Users" Association="Self.FK_Records_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Workers" Association="Self.FK_Records_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestForPromotion_StatusRequest" Association="Self.FK_RequestForPromotion_StatusRequest">
+            <End Role="StatusRequest" EntitySet="StatusRequest" />
+            <End Role="RequestForPromotion" EntitySet="RequestForPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestForPromotion_Workers" Association="Self.FK_RequestForPromotion_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="RequestForPromotion" EntitySet="RequestForPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutMasters_Users" Association="Self.FK_ReviewsAboutMasters_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReviewsAboutMasters" EntitySet="ReviewsAboutMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutMasters_Workers" Association="Self.FK_ReviewsAboutMasters_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="ReviewsAboutMasters" EntitySet="ReviewsAboutMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutServices_Services" Association="Self.FK_ReviewsAboutServices_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ReviewsAboutServices" EntitySet="ReviewsAboutServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReviewsAboutServices_Users" Association="Self.FK_ReviewsAboutServices_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReviewsAboutServices" EntitySet="ReviewsAboutServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_Role" Association="Self.FK_Workers_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Workers" EntitySet="Workers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_TypeService" Association="Self.FK_Services_TypeService">
+            <End Role="TypeService" EntitySet="TypeService" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersCards_Users" Association="Self.FK_UsersCards_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersCards" EntitySet="UsersCards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FayzullinaElvina_LavkaExamModelContainer" CdmEntityContainer="FayzullinaElvina_LavkaExamEntities1">
+          <EntitySetMapping Name="CollectionService">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.CollectionService">
+              <MappingFragment StoreEntitySet="CollectionService">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterQualification">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.MasterQualification">
+              <MappingFragment StoreEntitySet="MasterQualification">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMaster" ColumnName="IdMaster" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterService">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.MasterService">
+              <MappingFragment StoreEntitySet="MasterService">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMaster" ColumnName="IdMaster" />
+                <ScalarProperty Name="IdService" ColumnName="IdService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.Records">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+                <ScalarProperty Name="NumberInQueu" ColumnName="NumberInQueu" />
+                <ScalarProperty Name="IdService" ColumnName="IdService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestForPromotion">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.RequestForPromotion">
+              <MappingFragment StoreEntitySet="RequestForPromotion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMaster" ColumnName="IdMaster" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewsAboutMasters">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.ReviewsAboutMasters">
+              <MappingFragment StoreEntitySet="ReviewsAboutMasters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdMaster" ColumnName="IdMaster" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewsAboutServices">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.ReviewsAboutServices">
+              <MappingFragment StoreEntitySet="ReviewsAboutServices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdService" ColumnName="IdService" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateEdit" ColumnName="DateEdit" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="IdCollection" ColumnName="IdCollection" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusRequest">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.StatusRequest">
+              <MappingFragment StoreEntitySet="StatusRequest">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeService">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.TypeService">
+              <MappingFragment StoreEntitySet="TypeService">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersCards">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.UsersCards">
+              <MappingFragment StoreEntitySet="UsersCards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="NumberCard" ColumnName="NumberCard" />
+                <ScalarProperty Name="CardValidity" ColumnName="CardValidity" />
+                <ScalarProperty Name="CVC" ColumnName="CVC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workers">
+            <EntityTypeMapping TypeName="FayzullinaElvina_LavkaExamModel.Workers">
+              <MappingFragment StoreEntitySet="Workers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
