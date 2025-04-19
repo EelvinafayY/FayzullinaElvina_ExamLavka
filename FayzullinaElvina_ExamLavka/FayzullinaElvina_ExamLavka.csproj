@@ -64,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\MasterServicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windovs\AddServiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +135,9 @@
     </Compile>
     <Compile Include="DBConnection\Workers.cs">
       <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MasterServicePage.xaml.cs">
+      <DependentUpon>MasterServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windovs\AddServiceWindow.xaml.cs">
       <DependentUpon>AddServiceWindow.xaml</DependentUpon>
